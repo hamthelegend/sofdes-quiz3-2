@@ -40,6 +40,7 @@ namespace SofdesQuiz3_2
         {
             InitializeComponent();
             LoadData();
+            UpdatePicture();
         }
 
         private async void BrowseImage(object sender, RoutedEventArgs e)
