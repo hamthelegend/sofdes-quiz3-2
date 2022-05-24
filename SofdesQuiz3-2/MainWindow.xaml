@@ -5,9 +5,115 @@
     xmlns:local="using:SofdesQuiz3_2"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <ScrollViewer>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock
+                    Text="User ID"
+                    Margin="20,20,20,5"/>
+                <TextBox
+                    x:Name="idInput"
+                    BeforeTextChanging="NaturalNumbersOnly"
+                    Margin="20,5,20,10"
+                    IsTextPredictionEnabled="False" 
+                    IsSpellCheckEnabled="False"/>
+                <TextBlock
+                    Text="Name"
+                    Margin="20,10,20,5"/>
+                <TextBox
+                    x:Name="nameInput"
+                    Margin="20,5,20,10"
+                    IsTextPredictionEnabled="False" 
+                    IsSpellCheckEnabled="False"/>
+                <Button
+                    HorizontalAlignment="Stretch"
+                    Content="Browse Image"
+                    Click="BrowseImage"
+                    Margin="20,20,20,5"/>
+                <Button
+                    HorizontalAlignment="Stretch"
+                    Content="Save"
+                    Click="Save"
+                    Margin="20,5,20,10"/>
+                <Button
+                    HorizontalAlignment="Stretch"
+                    Content="View"
+                    Click="View"
+                    Margin="20,5,20,5"/>
+                <Button
+                    HorizontalAlignment="Stretch"
+                    Content="Clear"
+                    Click="Clear"
+                    Margin="20,5,20,20"/>
+            </StackPanel>
+            <Grid
+                Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.ColumnSpan="4"
+                    x:Name="pictureImage"
+                    Margin="10,20,20,20"
+                    MaxHeight="200"/>
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Content="First"
+                    Click="First"
+                    Margin="20,20,5,20"/>
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    Content="Previous"
+                    Click="Previous"
+                    Margin="5,20,5,20"/>
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    HorizontalAlignment="Stretch"
+                    Content="Next"
+                    Click="Next"
+                    Margin="5,20,5,20"/>
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    HorizontalAlignment="Stretch"
+                    Content="Last"
+                    Click="Last"
+                    Margin="5,20,20,20"/>
+            </Grid>
+            <controls:DataGrid
+                x:Name="usersDataGrid"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                ItemsSource="{x:Bind Users, Mode=OneWay}"
+                AutoGenerateColumns="True"
+                AutoGeneratingColumn="HidePictureColumn"
+                ColumnWidth="*"/>
+        </Grid>
+        
+    </ScrollViewer>
+    
 </Window>
